@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        /* CSS styles for your invoice */
+        /* Example styles */
+        body {
+            /*font-family: VnArial;*/
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+        .item-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .item-list th, .item-list td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="invoice-header">
+    <h2>Hóa đơn thanh toán đặt sân</h2>
+</div>
+<div class="invoice-details">
+    <p><strong>Tên khách hàng: </strong><span th:text="${user.getFullName()}"></span></p>
+    <p><strong>Địa chỉ email: </strong> <span th:text="${user.getEmail()}"></span></p>
+</div>
+<hr>
+Trạng thái: <span th:text="${items.trangThai}"></span><br>
+Ngày tạo: <span th:text="${#dates.format(items.ngayTao, 'yyyy-MM-dd')}"></span><br>
+Tên sân bóng: <span th:text="${items.tensanBong}"></span><br>
+Ngày đá: <span th:text="${items.ngayDa}"></span><br>
+Giờ đá: <span th:text="${items.gioDa}"></span><br>
+Tiền sân: <span th:text="${#numbers.formatInteger(items.tienSan, 0, 'DEFAULT')}"></span><br>
+Tiền cọc: <span th:text="${#numbers.formatInteger(items.tienSan*0.2, 0, 'DEFAULT')}"></span><br>
+
+</body>
+</html>

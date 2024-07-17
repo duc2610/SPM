@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+
+    <!-- DESCRIPTION -->
+    <meta name="description" content="SPM : Đặt sân bóng trực tuyến" />
+
+    <!-- OG -->
+    <meta property="og:title" content="SPM : Đặt sân bóng trực tuyến" />
+    <meta property="og:description" content="EduChamp : Education HTML Template" />
+    <meta property="og:image" content="" />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- FAVICONS ICON ============================================= -->
+    <link rel="icon" th:href="@{/assets/images/favicon.ico}" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/images/favicon.png}" />
+
+    <!-- PAGE TITLE HERE ============================================= -->
+    <title>SPM : Đặt sân bóng trực tuyến</title>
+
+    <!-- MOBILE SPECIFIC ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--[if lt IE 9]>
+    <script th:src="@{/assets/js/html5shiv.min.js}"></script>
+    <script th:src="@{/assets/js/respond.min.js}"></script>
+    <![endif]-->
+
+    <!-- All PLUGINS CSS ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/assets.css}">
+
+    <!-- TYPOGRAPHY ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/typography.css}">
+
+    <!-- SHORTCODES ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/shortcodes/shortcodes.css}">
+
+    <!-- STYLESHEETS ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}">
+    <link class="skin" rel="stylesheet" type="text/css" th:href="@{/assets/css/color/color-1.css}">
+
+</head>
+<body id="bg">
+<div class="page-wraper">
+    <div id="loading-icon-bx"></div>
+    <div class="account-form">
+        <div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
+            <a th:href="@{/spm/home}"><img th:src="@{/assets/images/logo-white-2.png}" alt=""></a>
+        </div>
+        <div class="account-form-inner">
+            <div class="account-container">
+                <div class="heading-bx left">
+                    <h2 class="title-head">Đăng kí</h2>
+                    <p>Đăng nhập với tài khoản <a href="login.html">Tại đây</a></p>
+                </div>
+                <form class="contact-bx" action="#" th:action="@{/register/process}" th:object="${registerUser}" method="post">
+                    <div th:if="${my_error}">
+                        <span th:text="${my_error}"></span>
+                    </div>
+                    <div class="row placeani">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Tên người dùng</label>
+                                    <input th:field="*{fullname}"  type="text" required="" class="form-control">
+                                    <div th:if="${#fields.hasErrors('fullname')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('fullname')}" th:text="${err}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Email</label>
+                                    <input th:field="*{email}"  type="email" required="" class="form-control">
+                                    <div th:if="${#fields.hasErrors('email')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Mật khẩu</label>
+                                    <input th:field="*{password}" type="password" class="form-control" required="" id="passwordInput">
+                                    <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger" id="passwordError"></small>
+                                    <span id="passwordErrorMessage" class="text-danger" style="display: none;">Vui lòng nhập lại mật khẩu.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Số điện thoại</label>
+                                    <input th:field="*{phone}" type="text" class="form-control" required="" id="phoneInput">
+                                    <small th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger" id="phoneError"></small>
+                                    <span id="phoneErrorMessage" class="text-danger" style="display: none;">Vui lòng nhập lại số điện thoại.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-b30">
+                            <button name="submit" type="submit" value="Submit" class="btn button-md">Đăng kí</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- External JavaScripts -->
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/vendors/bootstrap/js/popper.min.js}"></script>
+<script th:src="@{/assets/vendors/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+<script th:src="@{/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js}"></script>
+<script th:src="@{/assets/vendors/magnific-popup/magnific-popup.js}"></script>
+<script th:src="@{/assets/vendors/counter/waypoints-min.js}"></script>
+<script th:src="@{/assets/vendors/counter/counterup.min.js}"></script>
+<script th:src="@{/assets/vendors/imagesloaded/imagesloaded.js}"></script>
+<script th:src="@{/assets/vendors/masonry/masonry.js}"></script>
+<script th:src="@{/assets/vendors/masonry/filter.js}"></script>
+<script th:src="@{/assets/vendors/owl-carousel/owl.carousel.js}"></script>
+<script th:src="@{/assets/js/functions.js}"></script>
+<script th:src="@{/assets/js/contact.js}"></script>
+<script th:src="@{/assets/vendors/switcher/switcher.js}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var passwordInput = document.getElementById('passwordInput');
+        var passwordError = document.getElementById('passwordError');
+        var passwordErrorMessage = document.getElementById('passwordErrorMessage');
+        var phoneInput = document.getElementById('phoneInput');
+        var phoneError = document.getElementById('phoneError');
+        var phoneErrorMessage = document.getElementById('phoneErrorMessage');
+        passwordInput.addEventListener('input', function() {
+            if (passwordError.textContent.trim() !== '') {
+                passwordErrorMessage.style.display = 'block';
+            } else {
+                passwordErrorMessage.style.display = 'none';
+            }
+        });
+
+        phoneInput.addEventListener('input', function() {
+            if (phoneError.textContent.trim() !== '') {
+                phoneErrorMessage.style.display = 'block';
+            } else {
+                phoneErrorMessage.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

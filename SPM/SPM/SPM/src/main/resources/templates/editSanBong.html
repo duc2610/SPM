@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<!--<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>
+</head>-->
+
+<head>
+
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
+    <!--	<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+    <meta name="robots" content=""/>
+
+    <!-- DESCRIPTION -->
+    <meta name="description" content="SPM: Thuê sân bóng đá uy tín"/>
+
+    <!-- OG -->
+    <meta property="og:title" content="SPM: Thuê sân bóng đá uy tín"/>
+    <meta property="og:description" content="SPM: Thuê sân bóng đá uy tín"/>
+    <meta property="og:image" content=""/>
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- FAVICONS ICON ============================================= -->
+    <link rel="icon" href="../error-404.html" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/images/favicon.png}"/>
+
+    <!-- PAGE TITLE HERE ============================================= -->
+    <title>SPM: Thuê sân bóng đá : Quản lý nhân viên </title>
+
+    <!-- MOBILE SPECIFIC ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--[if lt IE 9]>
+    <script th:src="@{/assets/js/html5shiv.min.js}"></script>
+    <script th:src="@{/assets/js/respond.min.js}"></script>
+    <![endif]-->
+
+    <!-- All PLUGINS CSS ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/css/assets.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/vendors/calendar/fullcalendar.css}">
+    <!--	<link rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/css/emmploy.css}">-->
+    <!-- TYPOGRAPHY ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/css/typography.css}">
+
+    <!-- SHORTCODES ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/css/shortcodes/shortcodes.css}">
+
+    <!-- STYLESHEETS ============================================= -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/css/dashboard.css}">
+    <link class="skin" rel="stylesheet" type="text/css" th:href="@{/assets/admin/assets/css/color/color-1.css}">
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <title>Header Example</title>
+
+</head>
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+<!-- header start -->
+<header class="ttr-header">
+    <div class="ttr-header-wrapper">
+        <!--logo start -->
+        <div class="ttr-logo-box">
+            <div>
+                <a href="index.html" class="ttr-logo">
+                    <img alt="" class="ttr-logo-mobile" th:src="@{/assets/admin/assets/images/logo-mobile.png}" width="30" height="30">
+                    <img alt="" class="ttr-logo-desktop" th:src="@{/assets/admin/assets/images/logo-white.png}" width="160" height="27">
+                </a>
+            </div>
+        </div>
+        <!--logo end -->
+        <div class="ttr-header-menu">
+            <!-- header left menu start -->
+            <ul class="ttr-header-navigation">
+                <li>
+                    <a href="../index.html" class="ttr-material-button ttr-submenu-toggle">HOME</a>
+                </li>
+                <li>
+                    <a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU</a>
+                </li>
+            </ul>
+            <!-- header left menu end -->
+        </div>
+        <div class="ttr-header-right ttr-with-seperator">
+            <!-- header right menu start -->
+            <ul class="ttr-header-navigation">
+                <li>
+                    <a href="#" class="ttr-material-button ttr-search-toggle"><i class="fa fa-search"></i></a>
+                </li>
+                <li>
+                    <a href="#" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell"></i></a>
+                    <div class="ttr-header-submenu noti-menu">
+                        <div class="ttr-notify-header">
+                            <span class="ttr-notify-text-top">9 New</span>
+                            <span class="ttr-notify-text">User Notifications</span>
+                        </div>
+                        <div class="noti-box-list">
+                            <ul>
+                                <li>
+										<span class="notification-icon dashbg-gray">
+											<i class="fa fa-check"></i>
+										</span>
+                                    <span class="notification-text">
+											<span>Sneha Jogi</span> sent you a message.
+										</span>
+                                    <span class="notification-time">
+											<a href="#" class="fa fa-close"></a>
+											<span> 02:14</span>
+										</span>
+                                </li>
+                                <li>
+										<span class="notification-icon dashbg-yellow">
+											<i class="fa fa-shopping-cart"></i>
+										</span>
+                                    <span class="notification-text">
+											<a href="#">Your order is placed</a> sent you a message.
+										</span>
+                                    <span class="notification-time">
+											<a href="#" class="fa fa-close"></a>
+											<span> 7 Min</span>
+										</span>
+                                </li>
+                                <li>
+										<span class="notification-icon dashbg-red">
+											<i class="fa fa-bullhorn"></i>
+										</span>
+                                    <span class="notification-text">
+											<span>Your item is shipped</span> sent you a message.
+										</span>
+                                    <span class="notification-time">
+											<a href="#" class="fa fa-close"></a>
+											<span> 2 May</span>
+										</span>
+                                </li>
+                                <li>
+										<span class="notification-icon dashbg-green">
+											<i class="fa fa-comments-o"></i>
+										</span>
+                                    <span class="notification-text">
+											<a href="#">Sneha Jogi</a> sent you a message.
+										</span>
+                                    <span class="notification-time">
+											<a href="#" class="fa fa-close"></a>
+											<span> 14 July</span>
+										</span>
+                                </li>
+                                <li>
+										<span class="notification-icon dashbg-primary">
+											<i class="fa fa-file-word-o"></i>
+										</span>
+                                    <span class="notification-text">
+											<span>Sneha Jogi</span> sent you a message.
+										</span>
+                                    <span class="notification-time">
+											<a href="#" class="fa fa-close"></a>
+											<span> 15 Min</span>
+										</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" th:src="@{/assets/admin/assets/images/testimonials/pic3.jpg}" width="32" height="32"></span></a>
+                    <div class="ttr-header-submenu">
+                        <ul>
+                            <li><a href="user-profile.html">My profile</a></li>
+                            <li><a href="list-view-calendar.html">Activity</a></li>
+                            <li><a href="mailbox.html">Messages</a></li>
+                            <li><a href="../login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="ttr-hide-on-mobile">
+                    <a href="#" class="ttr-material-button"><i class="ti-layout-grid3-alt"></i></a>
+                    <div class="ttr-header-submenu ttr-extra-menu">
+                        <a href="#">
+                            <i class="fa fa-music"></i>
+                            <span>Musics</span>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-youtube-play"></i>
+                            <span>Videos</span>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-envelope"></i>
+                            <span>Emails</span>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-book"></i>
+                            <span>Reports</span>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-smile-o"></i>
+                            <span>Persons</span>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-picture-o"></i>
+                            <span>Pictures</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <!-- header right menu end -->
+        </div>
+        <!--header search panel start -->
+        <div class="ttr-search-bar">
+            <form class="ttr-search-form">
+                <div class="ttr-search-input-wrapper">
+                    <input type="text" name="qq" placeholder="search something..." class="ttr-search-input">
+                    <button type="submit" name="search" class="ttr-search-submit"><i class="ti-arrow-right"></i>
+                    </button>
+                </div>
+                <span class="ttr-search-close ttr-search-toggle">
+						<i class="ti-close"></i>
+					</span>
+            </form>
+        </div>
+        <!--header search panel end -->
+    </div>
+</header>
+<br><br>
+<main class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="container col-6">
+                <h1>Chỉnh sửa thông tin sân bóng</h1>
+    <form th:object="${sanBong}" th:action="@{/admin/updateSanBong}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+
+        <div>
+            <label th:for="tenSanBong">Tên Sân Bóng</label>
+            <input type="text" th:field="*{tenSanBong}" class="form-control"/>
+            <div th:if="${#fields.hasErrors('tenSanBong')}" th:errors="*{tenSanBong}" class="alert alert-danger">Lỗi Tên Sân Bóng</div>
+        </div>
+        <div style="clear: both; display: block; height: 10px"></div>
+
+        <div>
+            <label  th:for="diaDiem">Địa Điểm</label>
+            <input type="text" th:field="*{diaDiem}" class="form-control"/>
+            <div th:if="${#fields.hasErrors('diaDiem')}" th:errors="*{diaDiem}" class="alert alert-danger">Lỗi Địa Điểm</div>
+        </div>
+        <div style="clear: both; display: block; height: 10px"></div>
+
+        <div>
+            <label  th:for="tienSan">Tiền Sân</label>
+            <input type="text" th:field="*{tienSan}" class="form-control"/>
+            <div th:if="${#fields.hasErrors('tienSan')}" th:errors="*{tienSan}" class="alert alert-danger">Lỗi Tiền Sân</div>
+        </div>
+        <div style="clear: both; display: block; height: 10px"></div>
+<!--        accept="image/png, image/jpg"-->
+        <div id="previewImageContainer">
+            <label  th:for="hinhAnh">Hình Ảnh</label>
+            <img style="width: 20%;" th:src="@{${sanBong.hinhAnh}}" alt="Current Image" class="small-image" />
+            <div><label>Ảnh Mới </label></div>
+            <input type="file" name="imageFile" class="form-control"/>
+            <div th:if="${#fields.hasErrors('hinhAnh')}" th:errors="*{hinhAnh}" class="alert alert-danger">Lỗi Hình Ảnh</div>
+            <div th:if="${my_error != null}" class="alert alert-danger" th:text="${my_error}"></div>
+        </div>
+        <div style="clear: both; display: block; height: 10px"></div>
+
+        <div>
+            <label th:for="moTaSan">Mô Tả Sân</label>
+            <input type="text" th:field="*{moTaSan}" class="form-control"/>
+            <div th:if="${#fields.hasErrors('moTaSan')}" th:errors="*{moTaSan}" class="alert alert-danger">Lỗi Mô Tả Sân</div>
+        </div>
+        <div style="clear: both; display: block; height: 10px"></div>
+
+        <div>
+            <label>Loại Sân: </label>
+            <input th:value="${loaiSan}" readonly/>
+        </div>
+        <div style="clear: both; display: block; height: 10px"></div>
+        <input type="submit" class="btn btn-success" value="Save"/>
+    </form>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="ttr-overlay"></div>
+
+<!--<script th:src="@{/https://code.jquery.com/jquery-3.5.1.slim.min.js}"></script>-->
+<!--<script th:src="@{/https://cdn.jsdelivr.net/npm/popperjs/core2.5.4/dist/umd/popper.min.js}"></script>-->
+<!--<script th:src="@{/https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>-->
+<!-- External JavaScripts -->
+<script th:src="@{/assets/admin/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/bootstrap/js/popper.min.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/magnific-popup/magnific-popup.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/counter/waypoints-min.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/counter/counterup.min.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/imagesloaded/imagesloaded.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/masonry/masonry.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/masonry/filter.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/owl-carousel/owl.carousel.js}"></script>
+<script th:src='@{/assets/admin/assets/vendors/scroll/scrollbar.min.js}'></script>
+<script th:src="@{/assets/admin/assets/js/functions.js}"></script>
+<script th:src="@{/assets/admin/assets/vendors/chart/chart.min.js}"></script>
+<script th:src="@{/assets/admin/assets/js/admin.js}"></script>
+<script th:src='@{/assets/admin/assets/vendors/switcher/switcher.js}'></script>
+<script>
+    // Pricing add
+    function newMenuItem() {
+        var newElem = $('tr.list-item').first().clone();
+        newElem.find('input').val('');
+        newElem.appendTo('table#item-add');
+    }
+
+    if ($("table#item-add").is('*')) {
+        $('.add-item').on('click', function (e) {
+            e.preventDefault();
+            newMenuItem();
+        });
+        $(document).on("click", "#item-add .delete", function (e) {
+            e.preventDefault();
+            $(this).parent().parent().parent().parent().remove();
+        });
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageFile = document.querySelector('input[type="file"]');
+        const previewImage = document.createElement('img');
+        previewImage.style.width = '20%';
+
+        // Tìm phần tử chứa "ẢnhMới"
+        const container = document.getElementById('previewImageContainer');
+
+        // Chèn previewImage vào sau phần tử "ẢnhMới"
+        container.appendChild(previewImage);
+
+        imageFile.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            } else {
+                // Nếu không có file được chọn, hiển thị lại hình ảnh hiện tại
+                previewImage.src = '';
+            }
+        });
+    });
+</script>
+</body>
+</html>

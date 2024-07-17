@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>SPM: Đặt sân bóng trực tuyến </title>
+  <link rel="icon" th:href="@{/assets/images/favicon.ico}" type="image/x-icon" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .form-section {
+      margin-bottom: 30px;
+    }
+    .form-section h5 {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h3 class="text-center">Đặt lịch đá </h3>
+  <hr>
+
+    <div class="row">
+      <div class="col-md-6 form-section">
+        <h5 data-toggle="collapse" data-target="#personal-info" aria-expanded="true">THÔNG TIN CÁ NHÂN</h5>
+        <div id="personal-info" class="collapse show" th:object="${user}">
+          <div class="form-group">
+            <label for="fullName">Họ và tên</label>
+            <input type="text" class="form-control" id="fullName" th:field="*{fullName}" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Di động</label>
+            <input type="tel" class="form-control" id="phone" th:field="*{phoneNumber}" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 form-section">
+        <h5 data-toggle="collapse" data-target="#booking-details" aria-expanded="true">THÔNG TIN CHI TIẾT ĐẶT SÂN</h5>
+        <div id="booking-details" class="collapse show">
+          <p><strong>Tên sân bóng: </strong><span th:text="${sanBong.tenSanBong}"></span></p>
+          <p><strong>Giá sân: </strong><span th:text="${#numbers.formatInteger(sanBong.getTienSan(), 0, 'DEFAULT')}"></span></p>
+          <p><strong>Cọc trước: </strong><span th:text="${#numbers.formatInteger(sanBong.getTienSan()*0.2, 0, 'DEFAULT')}"></span></p>
+          <p><strong>Ngày đá: </strong> <span th:text="${date}"></span></p>
+          <p><strong>Giờ: </strong><span th:text="${gioDa}"></span></p>
+          <p><strong>Địa chỉ: </strong><span th:text="${sanBong.diaDiem}"></span></p>
+          <p>*Thông báo sẽ được gửi qua email khi bạn đặt sân thành công</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <a th:href="@{/dat-san/thanh-toan(email=${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)
+        ? #authentication.principal.attributes['email'] : #authentication.name}, date=${date}, idSanBong=${sanBong.getId()}, gioDa=${gioDa})}"><button type="submit" class="btn btn-primary">ĐẶT LỊCH</button></a>
+      <a th:href="@{/view/san-bong-detail(idSanBong=${sanBong.getId()}, email=${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)
+        ? #authentication.principal.attributes['email'] : #authentication.name})}"><button type="button" class="btn btn-secondary">HỦY</button></a>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

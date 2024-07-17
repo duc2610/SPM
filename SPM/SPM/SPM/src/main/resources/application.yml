@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    username: sa
+    url: jdbc:mysql://localhost:3306/spm
+    password: duc123
+  application:
+    name: Spm
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1003845647444-t42boml8shldj9bobr25u49020g9ost2.apps.googleusercontent.com
+            client-secret: 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
+  provider:
+    google:
+      authorization-uri: https://accounts.google.com/o/oauth2/auth
+      token-uri: https://oauth2.googleapis.com/token
+      user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+      user-name-attribute: sub
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ducnthe172246@fpt.edu.vn
+    password: ypar plpc yhxk houa
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mail Xac Nhan</title>
+</head>
+<body>
+<h6>Bạn đã đặt sân thành công từ website SPM: Cho thuê sân trực tuyến</h6>
+<p><strong>Tên sân bóng: </strong><span th:text="${tenSanBong}"></span></p>
+<p><strong>Cọc trước: </strong><span th:text="${#numbers.formatInteger(giaSan, 0, 'DEFAULT')}"></span></p>
+<p><strong>Ngày đá: </strong> <span th:text="${ngayDa}"></span></p>
+<p><strong>Giờ: </strong><span th:text="${gioDa}"></span></p>
+<p><strong>Địa chỉ: </strong><span th:text="${diaChi}"></span></p>
+</body>
+</html>
